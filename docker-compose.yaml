@@ -1,8 +1,15 @@
-  version: '3.11'
+services:
+  test:
+    build: .
+    command: python -m pytest tests/test_api.py -v --tb=short
+    # Exit after tests complete
+    restart: "no"
 
-  services:
-    web:
-      build: .
-      command: sh -c "uvicorn api:app --reload --port=8080 --host=0.0.0.0"
-      ports:
-        - 8080:8080
+  web:
+    build: .
+    command: sh -c "uvicorn api:app --reload --port=8080 --host=0.0.0.0"
+    ports:
+      - 8080:8080
+    depends_on:
+      test:
+        condition: service_completed_successfully
