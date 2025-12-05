@@ -11,7 +11,7 @@ A FastAPI-based machine learning API for predicting credit card fraud using logi
 
 ## General Application Diagram
 
-![image info](.\docs\Diagram.png)
+![image info](docs\Diagram.png)
 
 ## 🐳 Docker Setup
 
